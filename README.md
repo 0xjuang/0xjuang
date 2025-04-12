@@ -1,4 +1,4 @@
-# Juan Garcia – Systems Engineer | DevSecOps | Ethical Hacker-in-Training
+# Systems Engineer | DevSecOps | Ethical Hacker-in-Training
 
 _Automating infrastructure, hardening systems, and building tools from the ground up._
 
