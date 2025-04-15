@@ -21,7 +21,7 @@ While I don’t build frontend interfaces, I manage the full lifecycle of backen
 
 ## 🛠️ Infrastructure & Homelab Engineering
 
-My self-hosted lab ([gg3.dev](https://github.com/gg3-dev)) simulates a scaled-down enterprise environment:
+My self-hosted lab ([GG3-DevNet](https://github.com/gg3-dev)) simulates a scaled-down enterprise environment:
 
 - 🔐 VLAN segmentation, firewalling, and secure routing via pfSense
     
