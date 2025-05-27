@@ -1,119 +1,111 @@
-# Systems Engineer | DevSecOps | Ethical Hacker-in-Training
+# Systems Engineer | DevSecOps | Cyberpunk
 
 _Automating infrastructure, hardening systems, and building tools from the ground up._
 
 ![Python](https://img.shields.io/badge/Python-3670A0?style=for-the-badge&logo=python&logoColor=ffffff)
 ![Bash](https://img.shields.io/badge/Bash-121011?style=for-the-badge&logo=gnubash&logoColor=white)
-![Jenkins](https://img.shields.io/badge/Jenkins-D24939?style=for-the-badge&logo=jenkins&logoColor=white)
-![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
-![NGINX](https://img.shields.io/badge/Nginx-009639?style=for-the-badge&logo=nginx&logoColor=white)<br>
+![Puppet](https://img.shields.io/badge/Puppet-302B6D?style=for-the-badge&logo=puppet&logoColor=yellow)
+![NGINX](https://img.shields.io/badge/Nginx-009639?style=for-the-badge&logo=nginx&logoColor=white)
+![GPG](https://img.shields.io/badge/GPG-26A269?style=for-the-badge&logo=gnuprivacyguard&logoColor=white)
 ![XCP-ng](https://img.shields.io/badge/XCP--ng-000000?style=for-the-badge)
-![pfSense](https://img.shields.io/badge/pfSense-224C71?style=for-the-badge)
 ![WireGuard](https://img.shields.io/badge/WireGuard-88171A?style=for-the-badge)
-![DevSecOps](https://img.shields.io/badge/DevSecOps-007ACC?style=for-the-badge)
 ![SSH](https://img.shields.io/badge/SSH-333333?style=for-the-badge)
 ![Docs as Code](https://img.shields.io/badge/Docs--as--Code-4E4E4E?style=for-the-badge)
 
-I'm an **Automation-Oriented Systems Engineer** working at the intersection of development, infrastructure, and security. My work focuses on infrastructure automation, secure scripting, system design, and hands-on experimentation in a purpose-built lab.  
+I'm an **Automation-Oriented Systems Engineer**, building terminal-native infrastructure with a DevSecOps mindset. My work focuses on infrastructure automation, secure scripting, system design, and hands-on experimentation in a purpose-built lab.  
 While I don’t build frontend interfaces, I manage the full lifecycle of backend systems — from provisioning and orchestration to hardening and monitoring — giving me a comprehensive, operational view of real-world infrastructure.
 
 ---
 
-## 🛠️ Infrastructure & Homelab Engineering
+## 🔧 Homelab Stack
 
 My self-hosted lab ([GG3-DevNet](https://github.com/gg3-dev)) simulates a scaled-down enterprise environment:
 
-- 🔐 VLAN segmentation, firewalling, and secure routing via pfSense
-    
-- ☁️ Virtualized infrastructure with XCP-ng and networked storage
-    
-- 🐍 Python-powered automation: backups, SSH workflows, rsync, snapshot pipelines
-    
-- 🔧 CI/CD with Jenkins, shell scripts, cron jobs, and Git hooks
-    
-- 🧰 Custom tools for SSH key security, configuration management, and documentation
-    
-- 🧪 WireGuard VPN, NGINX reverse proxy, and self-contained service stacks
-    
+```sh
+~/GG3-DevNet
+├── xcp-ng           # hypervisor
+├── debian           # prod/dev VMs
+├── puppet           # config management
+├── nginx            # reverse proxy
+└── tailscale        # encrypted fallback
+```
 
-Tools and documentation are open-source:
+- **XCP-ng** — Bare-metal hypervisor with static IPs and virtual switch segmentation.
+- **Puppet** — Manages packages, dotfiles, users, and services like NGINX.
+- **NGINX** — Reverse proxy with hardened TLS and Certbot HTTPS.
+- **UFW** — Default-deny firewalls. SSH-only access allowed from fixed IPs.
+- **Tailscale** — Zero-trust VPN for fallback management.
+- **Bash/Python** — Scripting for health checks, port scans, backups, and automation.
+- **MacBook + UTM** — Isolated testbed for staging changes and testing scripts.
+- **Debian** — Uniform base OS for reliability, security, and config portability.
 
-- [gg3utils](https://github.com/gg3-dev/gg3utils): My modular utility library for SSH, scripting, backups, and automation
-    
-- [gg3-docs](https://github.com/gg3-dev/gg3-docs): Living documentation of system architecture and workflows
-    
-
-> This lab is my personal research ground — a space to test, break, and secure systems like an operator.
+> This lab is my research ground — a space to test, break, and secure systems like an operator.
 
 ---
 
-## 🔐 DevSecOps & Security Mindset
+## 🔐 DevSecOps & Security Practices
 
-My approach to development is rooted in operational awareness:
+My workflow prioritizes repeatability, observability, and least privilege.
 
-- I secure by default: SSH key best practices, passphrase-based authentication, key rotation
-    
-- I isolate infrastructure: VLANs, firewall rules, jump hosts, and segmented WireGuard VPNs
-    
-- I document everything: Markdown-based runbooks, reproducible setups, minimal-downtime configs
-    
-- I'm preparing for CEH certification and use tools like Nmap, Fail2Ban, and system hardening guidelines to stay sharp
-    
+```sh
+# Audit current firewall config
+sudo ufw status verbose
 
-> I believe automation isn't just about speed — it's about **resilience, repeatability, and reducing attack surface.**
+# Scan local subnet
+nmap -sn 10.10.10.0/24
 
----
+# Apply Puppet manifest to node
+sudo puppet apply ./manifests/init.pp
+```
 
-## 📁 Public Projects & Highlights
-
-- 🔧 [gg3utils](https://github.com/gg3-dev/gg3utils) – Drop-in Python + Bash modules for infrastructure workflows
-    
-- 📚 [gg3-docs](https://github.com/gg3-dev/gg3-docs) – Operational reference material for homelab environments
-    
-- 🖥️ [info.gg3.dev](https://info.gg3.dev/) – My public-facing profile, hosted on internal lab infrastructure
-    
-
-Coming soon:
-
-- 🌐 gg3.dev – Landing page for my infrastructure lab and automation toolkit
-
-- 📦 gg3.dev/dashboard – Custom dashboard for lab service monitoring
-    
-- 📘 `lab-case-study.md` – A technical breakdown of my homelab architecture
-
+- **SSH key auth only** — Namespaced key format (e.g. `key.gg3.git`, `key.gg3.lab.vm1`) with passphrase and rotation.
+- **Firewall lockdowns** — SSH-only access. All other ports are denied at host level.
+- **TLS enforcement** — Certbot + manual NGINX hardening: no autoindex, strict headers.
+- **Dotfiles as code** — Reproducible system configs and deployment scripts.
+- **Markdown + `.txt` logs** — Every change tracked in version-controlled documentation.
+- **Minimal tooling, max clarity** — `nmap`, `ufw`, `journalctl`, `systemctl`, `puppet`, `bash`, `Python`.
 
 ---
 
-## 📌 Roles That Fit Me
+## 📂 Public Projects
 
-- **DevOps / Platform Engineer**  
-    Automating deployments, managing pipelines, and optimizing system workflows.
-    
-- **Infrastructure Automation Engineer**  
-    Creating tools and scripts to provision, monitor, and maintain infrastructure at scale.
-    
-- **Security-Conscious Systems Engineer**  
-    Designing infrastructure with resilience, access control, and auditability in mind.
-    
-- **Homelab Architect & Systems Integrator**  
-    Operating a real-world lab with virtualization, segmentation, and service orchestration.
-    
-- **DevSecOps Engineer (in practice)**  
-    Applying secure-by-default principles across development and operations.
-    
-- **CEH Candidate / Aspiring Ethical Hacker**  
-    Expanding into offensive security to better defend the systems I build.
-    
+These are real tools, scripts, and documentation sets I’ve built and use daily.
+
+- **[gg3utils](https://github.com/gg3-dev/gg3utils)** — Modular Bash/Python toolkit for health checks, UFW audits, and Nmap parsing.
+- **[gg3-docs](https://github.com/gg3-dev/gg3-docs)** — Written architecture, firewall policies, SSH key logic, and system logs.
+- **[gg3-admin-tools](https://github.com/gg3-dev/gg3-admin-tools)** — Scripts for provisioning new systems and managing dotfiles.
+- **[vm-utils](https://github.com/gg3-dev/vm-utils)** — Automation for VM provisioning, rollback prep, and recovery.
+- **[.dotfiles](https://github.com/0xjuang/.dotfiles)** — POSIX-style dotfiles for macOS + Debian, tuned for scripting.
+- **[tech-crucible](https://github.com/0xjuang/tech-crucible)** — Personal roadmap and cert logs for DevOps/infra/security.
+- **[3-iX-WSL-CC](https://github.com/0xjuang/3-iX-WSL-CC)** — Legacy job repo with burn-in scripts for TrueNAS & WSL servers.
+
+---
+
+## 🧰 Roles I Fit
+
+These aren’t aspirations. They’re how I already work.
+
+- **Linux Systems Administrator** — I manage hardened Debian servers via SSH + Puppet. No GUI, no guesswork.
+- **Infrastructure Engineer** — Built and maintain a self-hosted hypervisor lab with proper IP/DNS/log separation.
+- **Junior DevOps Engineer** — I automate tasks using scripts, Git workflows, and preflight checks. Jenkins coming soon.
+- **Security-Focused Operator** — Every machine is built locked-down, with passphrase-protected keys, least exposure, and plaintext logs.
 
 ---
 
 ## 📫 Let's Connect
 
-- 📧 Email: [juan@gg3.dev](mailto:juan@gg3.dev)
-    
-- 🧑‍💻 Portfolio: [info.gg3.dev](https://info.gg3.dev/)
-    
-- 🐙 GitHub Org: [github.com/gg3-dev](https://github.com/gg3-dev)
-    
+- 📧 Email: [juan@gg3.dev](mailto:juan@gg3.dev)  
+- 🧑‍💻 Portfolio: [about.gg3.dev](https://about.gg3.dev/)  
+- 🐙 Org: [github.com/gg3-dev](https://github.com/gg3-dev)
 
-Want to chat about automation, infrastructure, or hardening your systems? I'm always open to a good technical conversation.
+---
+
+## 📄 About This README
+
+This README was written and maintained by Juan Garcia (@0xjuang) to reflect real infrastructure, tooling, and practices as of **May 2025**.
+
+Signed: `0x1G`  
+GPG Fingerprint: `E5F5 811F 0BED A8C1 ABEE  8161 708C BC98 E7D3 9F79`  
+Public key: [https://keys.openpgp.org/vks/v1/by-fingerprint/E5F5811F0BEDA8C1ABEE8161708CBC98E7D39F79](https://keys.openpgp.org/vks/v1/by-fingerprint/E5F5811F0BEDA8C1ABEE8161708CBC98E7D39F79)
+
+_Last updated: May 27, 2025_
