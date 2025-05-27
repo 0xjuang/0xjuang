@@ -32,7 +32,7 @@ My self-hosted lab ([GG3-DevNet](https://github.com/gg3-dev)) simulates a scaled
 
 - **XCP-ng** — Bare-metal hypervisor with static IPs and virtual switch segmentation.
 - **Puppet** — Manages packages, dotfiles, users, and services like NGINX.
-- **NGINX** — Reverse proxy with hardened TLS and Certbot HTTPS.
+- **NGINX** — Hardened TLS web server with Certbot-managed HTTPS.
 - **UFW** — Default-deny firewalls. SSH-only access allowed from fixed IPs.
 - **Tailscale** — Zero-trust VPN for fallback management.
 - **Bash/Python** — Scripting for health checks, port scans, backups, and automation.
