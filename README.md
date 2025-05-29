@@ -6,11 +6,22 @@ _Automating infrastructure, hardening systems, and building tools from the groun
 ![Bash](https://img.shields.io/badge/Bash-121011?style=for-the-badge&logo=gnubash&logoColor=white)
 ![Puppet](https://img.shields.io/badge/Puppet-302B6D?style=for-the-badge&logo=puppet&logoColor=yellow)
 ![NGINX](https://img.shields.io/badge/Nginx-009639?style=for-the-badge&logo=nginx&logoColor=white)
+![XCP-ng](https://img.shields.io/badge/XCP--ng-003399.svg?style=for-the-badge&logo=virtualbox&logoColor=white)
+![Tailscale](https://img.shields.io/badge/Tailscale-242424.svg?style=for-the-badge&logo=Tailscale&logoColor=white)
+![WireGuard](https://img.shields.io/badge/WireGuard-88171A.svg?style=for-the-badge&logo=WireGuard&logoColor=white)
+![GCP](https://img.shields.io/badge/Google%20Cloud-4285F4.svg?style=for-the-badge&logo=Google-Cloud&logoColor=white)
 ![GPG](https://img.shields.io/badge/GPG-26A269?style=for-the-badge&logo=gnuprivacyguard&logoColor=white)
-![XCP-ng](https://img.shields.io/badge/XCP--ng-000000?style=for-the-badge)
-![WireGuard](https://img.shields.io/badge/WireGuard-88171A?style=for-the-badge)
-![SSH](https://img.shields.io/badge/SSH-333333?style=for-the-badge)
-![Docs as Code](https://img.shields.io/badge/Docs--as--Code-4E4E4E?style=for-the-badge)
+![Linux](https://img.shields.io/badge/Linux-FCC624.svg?style=for-the-badge&logo=linux&logoColor=black)
+![Debian](https://img.shields.io/badge/Debian-A81D33.svg?style=for-the-badge&logo=Debian&logoColor=white)
+![Zsh](https://img.shields.io/badge/Zsh-F15A24.svg?style=for-the-badge&logo=Zsh&logoColor=white)
+![Vim](https://img.shields.io/badge/Vim-019733.svg?style=for-the-badge&logo=Vim&logoColor=white)
+![Git](https://img.shields.io/badge/Git-F05032.svg?style=for-the-badge&logo=git&logoColor=white)
+![tmux](https://img.shields.io/badge/tmux-1BB91F.svg?style=for-the-badge&logo=tmux&logoColor=white)
+![Markdown](https://img.shields.io/badge/Markdown-000000.svg?style=for-the-badge&logo=Markdown&logoColor=white)
+![TrueNas](https://img.shields.io/badge/TrueNAS-0095D5.svg?style=for-the-badge&logo=TrueNAS&logoColor=white)
+![Coursera](https://img.shields.io/badge/Coursera-0056D2.svg?style=for-the-badge&logo=Coursera&logoColor=white)
+![Udemy](https://img.shields.io/badge/Udemy-A435F0.svg?style=for-the-badge&logo=Udemy&logoColor=white)
+
 
 I'm an **Automation-Oriented Systems Engineer**, building terminal-native infrastructure with a DevSecOps mindset. My work focuses on infrastructure automation, secure scripting, system design, and hands-on experimentation in a purpose-built lab.  
 While I don’t build frontend interfaces, I manage the full lifecycle of backend systems — from provisioning and orchestration to hardening and monitoring — giving me a comprehensive, operational view of real-world infrastructure.
