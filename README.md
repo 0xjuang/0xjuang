@@ -101,12 +101,12 @@ These are real tools, scripts, and documentation sets I’ve built and use daily
 
 ## 🧰 Roles I Fit
 
-These aren’t aspirations. They’re how I already work.
+These roles summarize the functions I currently fulfill within my infrastructure practice.
 
-- **Linux Systems Administrator** — I manage hardened Debian servers via SSH + Puppet. No GUI, no guesswork.
-- **Infrastructure Engineer** — Built and maintain a self-hosted hypervisor lab with proper IP/DNS/log separation.
-- **Junior DevOps Engineer** — I automate tasks using scripts, Git workflows, and preflight checks. Jenkins coming soon.
-- **Security-Focused Operator** — Every machine is built locked-down, with passphrase-protected keys, least exposure, and plaintext logs.
+- **Linux Systems Administrator** — Hardened Debian systems with UFW, SSH key auth, and Puppet-managed config. No GUI, no guesswork — just clean shells and tight permissions.
+- **Infrastructure Engineer** — Self-hosted hypervisor lab (XCP-ng) with segmented IP/DNS zones, static routes, and CLI-based lifecycle management. Logs, nodes, and services all tracked in version control.
+- **Junior DevOps Engineer** — Bash/Python automation for provisioning, firewall audits, service checks, and backups. Git-based workflows with clear commits, preflight scripts, and reproducible results.
+- **Security-Focused Operator** — Systems built locked-down: passphrase-protected keys, SSH-only ingress, TLS-enforced endpoints, and plaintext change logs. Operate with zero trust by default.
 
 ---
 
