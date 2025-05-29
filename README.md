@@ -26,7 +26,7 @@ My self-hosted lab ([GG3-DevNet](https://github.com/gg3-dev)) simulates a scaled
 ├── xcp-ng           # hypervisor
 ├── debian           # prod/dev VMs
 ├── puppet           # config management
-├── nginx            # reverse proxy
+├── nginx            # web server
 └── tailscale        # encrypted fallback
 ```
 
