@@ -6,7 +6,7 @@ _Automating infrastructure, hardening systems, and building tools from the groun
 ![Bash](https://img.shields.io/badge/Bash-121011?style=for-the-badge&logo=gnubash&logoColor=white)
 ![Puppet](https://img.shields.io/badge/Puppet-302B6D?style=for-the-badge&logo=puppet&logoColor=yellow)
 ![NGINX](https://img.shields.io/badge/Nginx-009639?style=for-the-badge&logo=nginx&logoColor=white)
-![XCP-ng](https://img.shields.io/badge/XCP--ng-003399.svg?style=for-the-badge&logo=virtualbox&logoColor=white)
+![XCP-ng](https://img.shields.io/badge/XCP--ng-003399.svg?style=for-the-badge&logo=rocket&logoColor=white)
 ![Tailscale](https://img.shields.io/badge/Tailscale-242424.svg?style=for-the-badge&logo=Tailscale&logoColor=white)
 ![WireGuard](https://img.shields.io/badge/WireGuard-88171A.svg?style=for-the-badge&logo=WireGuard&logoColor=white)
 ![GCP](https://img.shields.io/badge/Google%20Cloud-4285F4.svg?style=for-the-badge&logo=Google-Cloud&logoColor=white)
