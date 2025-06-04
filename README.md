@@ -89,11 +89,11 @@ sudo puppet apply ./manifests/init.pp
 
 These are real tools, scripts, and documentation sets I’ve built and use daily.
 
+- **[gtop](https://github.com/0xjuang/gtop)** — Modular Python snapshot tool for CPU, memory, disk, and network stats. Designed for system introspection during provisioning and orchestration pipelines
 - **[gg3utils](https://github.com/gg3-dev/gg3utils)** — Modular Bash/Python toolkit for health checks, UFW audits, and Nmap parsing.
 - **[gg3-docs](https://github.com/gg3-dev/gg3-docs)** — Written architecture, firewall policies, SSH key logic, and system logs.
 - **[gg3-admin-tools](https://github.com/gg3-dev/gg3-admin-tools)** — Scripts for provisioning new systems and managing dotfiles.
 - **[vm-utils](https://github.com/gg3-dev/vm-utils)** — Automation for VM provisioning, rollback prep, and recovery.
-- **[.dotfiles](https://github.com/0xjuang/.dotfiles)** — POSIX-style dotfiles for macOS + Debian, tuned for scripting.
 - **[tech-crucible](https://github.com/0xjuang/tech-crucible)** — Personal roadmap and cert logs for DevOps/infra/security.
 - **[3-iX-WSL-CC](https://github.com/0xjuang/3-iX-WSL-CC)** — Legacy job repo with burn-in scripts for TrueNAS & WSL servers.
 
