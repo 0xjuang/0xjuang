@@ -52,22 +52,28 @@ My self-hosted lab ([GG3-DevNet](https://github.com/gg3-dev)) simulates a scaled
 
 ```sh
 ~/GG3-DevNet
-├── xcp-ng           # hypervisor
-├── debian           # prod/dev VMs
-├── puppet           # config management
-├── nginx            # web server
-└── tailscale        # encrypted fallback
+├── xcp-ng           # bare-metal hypervisor
+│   └── terraform    # VM provisioning via XO API
+├── debian           # base OS for prod/dev VMs
+│   ├── puppet       # config management for VMs
+│   └── nginx        # hardened web services
+├── tailscale        # encrypted fallback access
+└── bash/python      # scripting, monitoring, automation
 ```
 
-- **XCP-ng** — Bare-metal hypervisor with static IPs and virtual switch segmentation.
-- **Terraform** — VM provisioning and cloud-init injection via Xen Orchestra API.
-- **Puppet** — Manages packages, dotfiles, users, and services like NGINX.
-- **NGINX** — Hardened TLS web server with Certbot-managed HTTPS.
-- **UFW** — Default-deny firewalls. SSH-only access allowed from fixed IPs.
-- **Tailscale** — Zero-trust VPN for fallback management.
-- **Bash/Python** — Scripting for health checks, port scans, backups, and automation.
-- **MacBook + UTM** — Isolated testbed for staging changes and testing scripts.
-- **Debian** — Uniform base OS for reliability, security, and config portability.
+- **XCP-ng** — Bare-metal hypervisor with static IPs and segmented virtual switches.  
+  └── **Terraform** — Provisions Debian VMs via Xen Orchestra API with cloud-init injection.
+
+- **Debian** — Uniform base OS across all nodes for security and portability.  
+  ├── **Puppet** — Manages system state: users, dotfiles, packages, and services.  
+  ├── **NGINX** — TLS-only web server with Certbot integration and hardened headers.  
+  └── **UFW** — Default-deny firewall with SSH access restricted to trusted IPs.
+
+- **Tailscale** — Zero-trust fallback VPN for remote management if SSH fails.
+
+- **Bash / Python** — Custom scripts for auditing, snapshots, port scans, and automation.
+
+- **MacBook + UTM** — Isolated staging environment for testing scripts and deployments before live use.
 
 > This lab is my research ground — a space to test, break, and secure systems like an operator.
 
@@ -75,25 +81,36 @@ My self-hosted lab ([GG3-DevNet](https://github.com/gg3-dev)) simulates a scaled
 
 ## 🔐 DevSecOps & Security Practices
 
-My workflow prioritizes repeatability, observability, and least privilege.
+My workflow prioritizes **repeatability**, **observability**, and **least privilege** — all driven through terminal-native tooling and version control.
 
 ```sh
-# Audit current firewall config
+# Audit UFW rules
 sudo ufw status verbose
 
-# Scan local subnet
+# Scan local subnet for live hosts
 nmap -sn 10.10.10.0/24
 
-# Apply Puppet manifest to node
+# Apply configuration state to node
 sudo puppet apply ./manifests/init.pp
 ```
 
-- **SSH key auth only** — Namespaced key format (e.g. `key.gg3.git`, `key.gg3.lab.vm1`) with passphrase and rotation.
-- **Firewall lockdowns** — SSH-only access. All other ports are denied at host level.
-- **TLS enforcement** — Certbot + manual NGINX hardening: no autoindex, strict headers.
-- **Dotfiles as code** — Reproducible system configs and deployment scripts.
-- **Markdown + `.txt` logs** — Every change tracked in version-controlled documentation.
-- **Minimal tooling, max clarity** — `nmap`, `ufw`, `journalctl`, `systemctl`, `puppet`, `bash`, `Python`.
+- **SSH Key Authentication Only**  
+  Namespaced key format (e.g. `key.gg3.git`, `key.gg3.lab.vm1`), always passphrase-protected and rotated regularly.
+
+- **Firewall Lockdown by Default**  
+  UFW configured to deny all except trusted SSH ingress. No open ports unless explicitly whitelisted.
+
+- **TLS Enforcement**  
+  Certbot for certificates + hardened NGINX config (no autoindex, HSTS, X-Frame-Options, and other strict headers).
+
+- **Dotfiles as Code**  
+  Managed through Git and deployed via Puppet or symlinked provisioning scripts.
+
+- **Logged Infrastructure Changes**  
+  Markdown (`.md`) and plaintext (`.txt`) logs tracked in Git for every configuration, deployment, and state change.
+
+- **Minimal Tooling, Max Clarity**  
+  Only essentials: `nmap`, `ufw`, `journalctl`, `systemctl`, `puppet`, `bash`, `python`.
 
 ---
 
@@ -101,34 +118,52 @@ sudo puppet apply ./manifests/init.pp
 
 These are real tools, scripts, and documentation sets I’ve built and use daily.
 
-- **[gtop](https://github.com/0xjuang/gtop)** — Modular Python snapshot tool for CPU, memory, disk, and network stats.
-- **[gg3utils](https://github.com/gg3-dev/gg3utils)** — Bash/Python toolkit for audits, health checks, and automation.
-- **[terraform-xo-vm](https://github.com/0xjuang/terraform-xo-vm)** — Deploys cloud-init VMs on XCP-ng via Terraform & XO API.
-- **[gg3-docs](https://github.com/gg3-dev/gg3-docs)** — Architecture, firewall policies, SSH schemes, and logs.
-- **[gg3-admin-tools](https://github.com/gg3-dev/gg3-admin-tools)** — Dotfile and service setup scripts.
-- **[vm-utils](https://github.com/gg3-dev/vm-utils)** — VM provisioning, rollback prep, and CLI helpers.
-- **[tech-crucible](https://github.com/0xjuang/tech-crucible)** — Personal cert/skill roadmap and logs.
-- **[3-iX-WSL-CC](https://github.com/0xjuang/3-iX-WSL-CC)** — Legacy burn-in scripts for WSL/TrueNAS testing.
+- **[gtop](https://github.com/0xjuang/gtop)**  
+  Modular Python snapshot tool for CPU, memory, disk, and network stats.
+
+- **[citadel-33](https://github.com/0xjuang/citadel-33)**  
+  Secure password generator using user-defined patterns and entropy.
+
+- **[gg3utils](https://github.com/gg3-dev/gg3utils)**  
+  Bash/Python toolkit for audits, health checks, and automation tasks.
+
+- **[terraform-xo-vm](https://github.com/0xjuang/terraform-xo-vm)**  
+  Deploys cloud-init Debian VMs on XCP-ng via Terraform + Xen Orchestra API.
+
+- **[gg3-docs](https://github.com/gg3-dev/gg3-docs)**  
+  Architecture blueprints, firewall policies, SSH key schemes, and operational logs.
+
+- **[gg3-admin-tools](https://github.com/gg3-dev/gg3-admin-tools)**  
+  System setup helpers — dotfiles, packages, service states, and recovery tools.
+
+- **[vm-utils](https://github.com/gg3-dev/vm-utils)**  
+  VM lifecycle helpers for provisioning, rollback snapshots, and CLI-driven automation.
+
+- **[tech-crucible](https://github.com/0xjuang/tech-crucible)**  
+  Certification roadmap, personal learning tracker, and daily log entries.
+
+- **[3-iX-WSL-CC](https://github.com/0xjuang/3-iX-WSL-CC)**  
+  Legacy burn-in suite for WSL/TrueNAS testing from previous lab iterations.
 
 ---
 
 ## 🧰 Roles I Fit
 
 **🔐 Junior Security Engineer**  
-- SSH key auth, UFW lockdowns, TLS-only endpoints  
-- Zero-trust fallback access with WireGuard and Tailscale  
+- SSH key authentication, UFW lockdowns, and TLS-only service exposure  
+- Zero-trust fallback access using WireGuard and Tailscale tunnels
 
 **🖥️ Linux System Administrator**  
-- Debian environments, config-as-code with Puppet  
-- CLI-based service management, recovery workflows  
+- Debian-based environments with config-as-code via Puppet  
+- CLI-native workflows for service management, recovery, and troubleshooting
 
 **🏗️ Infrastructure Engineer**  
-- VM lifecycle automation with Terraform and Xen Orchestra  
-- Reproducible setups with static IPs and cloud-init  
+- VM lifecycle automation using Terraform and the Xen Orchestra API  
+- Cloud-init provisioning with reproducible network and storage configs
 
 **⚙️ Junior DevOps Engineer**  
-- Shell scripting, config management, and Git workflows  
-- Custom toolsets for audit, monitoring, and provisioning  
+- Shell scripting, config management, and Git-driven workflows  
+- Custom-built tooling for audits, monitoring, backups, and hardening
 
 ---
 
@@ -149,3 +184,4 @@ GPG Fingerprint: `E5F5 811F 0BED A8C1 ABEE 8161 708C BC98 E7D3 9F79`
 Public key: [https://keys.openpgp.org/vks/v1/by-fingerprint/E5F5811F0BEDA8C1ABEE8161708CBC98E7D39F79](https://keys.openpgp.org/vks/v1/by-fingerprint/E5F5811F0BEDA8C1ABEE8161708CBC98E7D39F79)
 
 _Last updated: June 15, 2025_
+
